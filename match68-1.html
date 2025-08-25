@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>A67_Sec08_24101593_MD.-FAYAZ-FARDIN-KHAN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec25_24101452_Arifin-Ahamed-.txt<p></p><pre>
+task 4#
+public class task4{
+    public static void swapChild(BTNode root, int lvl, int M) {
+        if (root == null){
+
+       return;
+}
+        if (lvl&gt;=M) {
+            BTNode temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+        }
+        swapChild(root.left,lvl+ 1, M);
+        swapChild(root.right, lvl+1,M);
+    }
+   
+}
+}
+task5#
+public class task 5{
+<a name="1"></a><font color="#00FF00"><a href="match68-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_8.gif"/></a>
+
+    public static Integer subtractSummation(BTNode root) {
+        if (root == null) {
+return 0;
+}
+        int leftSum = sumTree(root.left);
+
+
+          int rightSum = sumTree(root.right);
+
+        return leftSum-rightSum;
+    }
+    private static int sumTree(BTNode node) {
+
+
+        if (node == null){
+</font> return 0;
+}
+        return (int) node.elem + sumTree(node.left)+   
+  sumTree(node.right);
+    }
+   
+}}
+task6#
+
+public class Task6 {
+
+    public static Integer levelSum(BTNode root) {
+        if (root == null) {
+            return 0;
+        }
+<a name="3"></a><font color="#00FFFF"><a href="match68-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+        return levelSumHelper(root, 1);
+
+    }
+    private static int levelSumHelper(BTNode node, int level) {
+
+        if (node == null) {
+            return 0;
+        }
+
+        int value = (int) node.elem;
+
+        if (level % 2 != 0) {  
+</font><a name="2"></a><font color="#0000FF"><a href="match68-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_7.gif"/></a>
+
+            return value    + levelSumHelper(node.left, level + 1) + levelSumHelper(node.right, level + 1);
+        } else {
+           
+                  return - value
+                  + levelSumHelper(node.left, level + 1)
+                 + levelSumHelper(node.right, level + 1);
+</font>        }
+    }
+}
+
+task4#
+
+<a name="0"></a><font color="#FF0000"><a href="match68-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_34.gif"/></a>
+
+public class Task4 {
+
+   
+    public static Integer rangeSum(BSTNode root, Integer low, Integer high) {
+        if (root == null) {
+            return 0;  
+        }
+
+        int value = (int) root.elem;
+
+       
+        if (value &gt;= low &amp;&amp; value &lt;= high) {
+            return value  + rangeSum(root.left, low, high) 
+                 + rangeSum(root.right, low, high);
+        }
+
+        if (value &lt; low) {
+            return rangeSum(root.right, low, high);
+        }
+
+        else{
+        return rangeSum(root.left, low, high);
+    }
+  }
+}
+
+Task5#
+public class Task5 {
+
+    public static Integer mirrorSum(BSTNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return mirrorSumHelper(root.left, root.right);
+    }
+
+    private static int mirrorSumHelper(BSTNode leftNode, BSTNode rightNode) {
+  
+        if (leftNode == null || rightNode == null) {
+            return 0;
+        }
+        int sum = (int) leftNode.elem + (int) rightNode.elem;
+
+        sum +=mirrorSumHelper(leftNode.left, rightNode.right);
+
+        sum+= mirrorSumHelper(leftNode.right, rightNode.left);
+
+        return sum;
+    }
+}
+
+task6#
+</font>public class task6{
+public static Boolean isBST(BSTNode root){
+
+        int first_root= (int) root.elem;
+    
+          if (root == null) {
+              return true; 
+        }
+
+          if (root.left != null &amp;&amp; (int)root.left.elem &gt;= (int)root.elem  ) {
+            return false;
+        }
+
+        if (root.right != null &amp;&amp; (int)root.right.elem &lt;= (int)root.elem ) {
+            return false;
+        }
+
+       
+        return isBST(root.left) &amp;&amp; isBST(root.right);
+    }}</pre>
+</body>
+</html>

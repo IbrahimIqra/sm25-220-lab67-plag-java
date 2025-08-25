@@ -1,0 +1,190 @@
+<html>
+<head>
+<title>A67_Sec03_24101235_Md.-Fardin-Bashar---MD.-FARDIN-BASHAR.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec13_24101480_Opika-Ahmmed.txt<p></p><pre>
+  Assignment 6
+public class Task4 {
+ //===================================TASK#4===================================
+    // This method takes only 3 parameters
+    // 1st one is root of the given tree
+    // 2nd one is there to help you count the levels
+    // 3rd one is the level TILL whic you need to swap childs
+    // All the changes will happen in-place
+    // This method doesn't return anything
+    // You can use extra helper private static methods as per need
+    public static void swapChild( BTNode root, int lvl, int M ){
+        //TO DO
+     if(root==null){
+        return;
+      }
+      if(lvl&lt;M){
+       BTNode temp=root.left;
+       root.left=root.right;
+<a name="2"></a><font color="#0000FF"><a href="match139-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+       root.right=temp;
+        swapChild(root.left,lvl+1,M);
+           swapChild(root.right,lvl+1,M);
+          
+      }
+        
+        
+    }
+    //============================================================================
+}
+
+public class Task5 {
+
+    //===================================TASK#5===================================
+    // This method takes only 1 parameter which is root of the given tree
+    // This method returns an Integer
+    // At times you may need to typeCast root.elem to Integer
+    // You can use extra helper private static methods with extra extra params as per need
+    public static Integer subtractSummation( BTNode root ){
+        //TO DO 
+      if(root==null){
+</font>        return null;
+      }
+      int leftSum=helper(root.left,0);
+      int rightSum=helper(root.right,0);
+      return leftSum-rightSum;
+    }
+    private static Integer helper(BTNode root,int lvl){
+      if(root==null){
+        return null;
+      }
+       int current =0;
+       if(root.elem==null){
+         current=0;
+       }
+       else{
+       current=(Integer)root.elem;
+       }
+      int l;
+         if (root.left == null) {
+        l = 0;
+     } 
+        else {
+       l = helper(root.left,lvl+1);
+     }
+    int r;
+    if (root.right == null) {
+    r = 0;
+    } 
+    else {
+    r = helper(root.right,lvl+1);
+    }
+      return current+l+r;
+    }
+
+}
+public class Task6 {
+
+    //===================================TASK#6===================================
+    // This method takes only 1 parameter which is root of the given tree
+    // This method returns an Integer
+    // At times you may need to typeCast root.elem to Integer
+    // You can use extra helper private static methods with extra extra params as per need
+    public static Integer levelSum( BTNode root ){
+            return helper(root,1);
+    }
+      private static Integer helper(BTNode root,int lvl){
+    if (root == null) {
+        return 0;
+    }
+    Integer current;
+    if (root.elem == null) {
+        current = 0;
+    } else {
+<a name="1"></a><font color="#00FF00"><a href="match139-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_8.gif"/></a>
+
+        current = (Integer) root.elem;
+    }
+
+    if (lvl % 2 == 0) {
+        return current + helper(root.left, lvl + 1) + helper(root.right, lvl + 1);
+    } else {
+        return -current + helper(root.left, lvl + 1) + helper(root.right, lvl + 1);
+</font>    }
+}
+}
+
+Assignment 7
+
+<a name="0"></a><font color="#FF0000"><a href="match139-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_30.gif"/></a>
+
+public class Task4 {
+
+    //===================================TASK#4======================
+    // This method takes only three parameters
+    // first one is the root of the given tree
+    // second one the low range and third one is high range
+    // You can use extra helper private static methods as per need
+    public static Integer rangeSum( BSTNode root, Integer low, Integer high ){
+      if(root==null)return 0;
+      int sum=0;
+      if(root.elem&gt;=low&amp;&amp; root.elem&lt;=high){
+        sum+=root.elem;
+      }
+      if(root.elem&gt;low){
+         sum+=rangeSum(root.left,low,high);
+      }
+      if(root.elem&lt;high){
+        sum+=rangeSum(root.right,low,high);
+      }
+      return sum;
+    //===============================================================
+
+    }
+}
+
+public class Task5 {
+
+    //===================================TASK#5======================
+    // This method takes only one parameter
+    // it is root of the given tree
+    // You can use extra helper private static methods as per need
+    public static Integer mirrorSum( BSTNode root ){
+       if(root==null)return 0;
+       return helper(root.left,root.right);
+    }
+    private static int helper(BSTNode left,BSTNode right){
+      if(left==null|| right==null)return 0;
+      int sum=left.elem+right.elem;
+      sum+=helper(left.left,right.right);
+      sum+=helper(left.right,right.left);
+      return sum;
+    }
+}
+
+    //===============================================================
+
+
+
+public class Task6 {
+
+    //===================================TASK#6======================
+    // This method takes only one parameter
+    // it is root of the given tree
+    // You can use extra helper private static methods as per need
+    public static Boolean isBST( BSTNode root ){
+</font>     return helper(root,null,null);
+    }
+      private static boolean helper(BSTNode node, Integer min, Integer max) {
+        if (node == null) return true;
+        if (min != null &amp;&amp; node.elem &lt;= min) {
+            return false;
+        }
+        if (max != null &amp;&amp; node.elem &gt;= max) {
+            return false;
+        }
+        return helper(node.left, min, node.elem) &amp;&amp;
+               helper(node.right, node.elem, max);
+    }
+}
+    //===============================================================</pre>
+</body>
+</html>

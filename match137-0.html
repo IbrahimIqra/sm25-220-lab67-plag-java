@@ -1,0 +1,204 @@
+<html>
+<head>
+<title>A67_Sec07_24301342_Zahara-Abedin---ZAHARA-ABEDIN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec07_24301342_Zahara-Abedin---ZAHARA-ABEDIN.txt<p></p><pre>
+﻿Lab 6
+
+
+//Task 4
+
+
+public static void swapChild( BTNode root, int lvl, int M ) {
+
+
+        if (root == null) return;
+
+
+        if (lvl &lt; M) {
+            BTNode temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+        }
+
+
+        swapChild(root.left,  lvl+1, M);
+        swapChild(root.right, lvl+1, M);
+}
+
+
+
+
+//Task 5
+
+
+<a name="1"></a><font color="#00FF00"><a href="match137-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_10.gif"/></a>
+
+public static Integer subtractSummation( BTNode root ) {
+
+
+        if (root == null) return 0;
+
+
+        int leftSum  = sumOnlySubT(root.left);
+        int rightSum = sumOnlySubT (root.right);
+
+
+        return leftSum - rightSum;
+ }
+
+
+ private static int sumOnlySubT(BTNode node) {
+
+
+        if (node == null) return 0;
+
+
+        int sum = (Integer) node.elem;
+</font>
+
+        return (sum + sumOnlySubT(node.left) + sumOnlySubT(node.right));
+ }
+
+
+
+
+
+
+
+
+
+
+//Task 6
+
+
+<a name="0"></a><font color="#FF0000"><a href="match137-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_13.gif"/></a>
+
+public static Integer levelSum( BTNode root ) {
+        return dfsLevel(root, 0); 
+    }
+
+
+    private static int dfsLevel(BTNode node, int lvl) {
+        if (node == null) return 0;
+
+
+        int val = (Integer) node.elem;
+        int left  = dfsLevel(node.left,  lvl+1);
+        int right = dfsLevel(node.right, lvl+1);
+
+
+        if (lvl % 2 == 1) { 
+</font>            return val+left+right;
+        } 
+        else {
+            return - val+left+right;
+        }
+    }
+
+
+
+
+Lab 7
+
+
+//Task 4
+
+
+public static Integer rangeSum( BSTNode root, Integer low, Integer high ) {
+
+
+        if (root==null || low==null || high==null) return 0;
+
+
+<a name="2"></a><font color="#0000FF"><a href="match137-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_10.gif"/></a>
+
+        int sum = root.elem;
+
+
+        if (sum &lt; low) {
+            return rangeSum(root.right, low, high);
+        } else if (sum &gt; high) {
+            return rangeSum(root.left, low, high);
+        } else {
+            return sum + rangeSum(root.left, low, high) + rangeSum(root.right, low, high);
+</font>        }
+    }
+
+
+
+
+
+
+
+
+//Task 5
+
+
+
+
+<a name="3"></a><font color="#00FFFF"><a href="match137-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_8.gif"/></a>
+
+public static Integer mirrorSum( BSTNode root ) {
+
+
+        if (root == null) return 0;
+
+
+        return pairSum(root.left, root.right);
+    }
+
+
+    private static int pairSum(BSTNode nodeA, BSTNode nodeB) {
+
+
+        if (nodeA == null || nodeB == null) return 0;
+
+
+        int sum = nodeA.elem + nodeB.elem;
+</font><a name="5"></a><font color="#FF0000"><a href="match137-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_5.gif"/></a>
+
+        sum += pairSum(nodeA.left, nodeB.right);
+        sum += pairSum(nodeA.right, nodeB.left);
+        return sum;
+</font>    }
+
+
+
+
+
+
+//Task 6
+
+
+<a name="4"></a><font color="#FF00FF"><a href="match137-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_6.gif"/></a>
+
+public static Boolean isBST( BSTNode root ) {
+
+
+        return isBSTCheck(root, null, null);
+
+
+ }
+
+
+ private static boolean isBSTCheck(BSTNode node, Integer min, Integer max) {
+
+
+        if (node == null) return true;
+</font>
+
+        int val = node.elem;
+
+
+        if ((min!=null &amp;&amp; val&lt;=min) || (max!=null &amp;&amp; val&gt;=max)) return false;
+
+
+        return isBSTCheck(node.left, min, val) &amp;&amp; isBSTCheck(node.right, val, max);
+
+
+ }</pre>
+</body>
+</html>

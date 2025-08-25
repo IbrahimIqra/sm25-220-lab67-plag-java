@@ -1,0 +1,197 @@
+<html>
+<head>
+<title>A67_Sec09_24101357_Rejwan-Ul-Islam.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec09_24101357_Rejwan-Ul-Islam.txt<p></p><pre>
+﻿LAB 6
+
+
+Task 4 &gt;&gt;&gt;
+
+
+
+
+public class Task4 {
+<a name="3"></a><font color="#00FFFF"><a href="match124-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_8.gif"/></a>
+
+    public static void swapChild( BTNode root, int lvl, int M ){
+        if (root == null) {
+            return;
+        }
+        if (lvl &lt; M){
+            BTNode temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+            
+            
+            swapChild(root.right, lvl+1,M);
+</font>            swapChild(root.left, lvl+1, M);
+        }
+    }
+}
+
+
+
+
+Task 5 &gt;&gt;&gt;
+
+
+
+
+public class Task5 {
+    public static Integer subtractSummation( BTNode root ){
+       if (root == null) {
+<a name="5"></a><font color="#FF0000"><a href="match124-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+            return null; 
+        }
+
+
+        int leftSum = sum(root.left);
+        int rightSum = sum(root.right);
+
+
+        return leftSum - rightSum;
+    }
+     private static int sum(BTNode node) {
+</font>        if (node == null) {
+            return 0;
+        }
+        return (int) node.elem + sum(node.left) + sum(node.right);
+    }
+
+
+}
+
+
+Task 6 &gt;&gt;&gt;
+
+
+public class Task6 {
+     public static Integer levelSum(BTNode root) {
+        if (root == null) {
+            return null;
+        }
+        return sum(root, 0);
+    }
+
+
+    private static int sum(BTNode node, int lvl) {
+        if (node == null) {
+            return 0;
+        }
+
+
+<a name="2"></a><font color="#0000FF"><a href="match124-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_9.gif"/></a>
+
+        int val = (int) node.elem; 
+
+
+        if (lvl % 2 == 0) {
+            
+            return -val + sum(node.left, lvl + 1) + sum(node.right, lvl + 1);
+        } else {
+            
+            return val + sum(node.left, lvl + 1) + sum(node.right, lvl + 1);
+</font>        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                LAB 7 
+
+
+
+
+Task 4 &gt;&gt;&gt;
+
+
+public class Task4 {
+<a name="4"></a><font color="#FF00FF"><a href="match124-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+    public static Integer rangeSum( BSTNode root, Integer low, Integer high ){
+        if(root == null){
+            return 0;
+        }
+        
+        int sum = 0;
+        if(root.elem &gt; low){
+</font>            sum += rangeSum(root.left,low, high);
+            
+        }
+        if(root.elem &gt;= low  &amp;&amp; root.elem &lt;= high){
+            sum += root.elem;
+        }
+        if(root.elem &lt; high ){
+            sum += rangeSum(root.right,low, high);
+        }
+        
+        return sum;
+        }
+}
+
+
+
+
+Task5 &gt;&gt;&gt;
+
+
+public class Task5 {
+
+
+    public static int mirrorSum (BSTnode root) {
+        if (root == null) {
+            return 0;
+        }
+        return helper(root.left, root.right);
+    }
+    
+<a name="1"></a><font color="#00FF00"><a href="match124-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_10.gif"/></a>
+
+    private int helper(BSTnode left, BSTnode right) {
+        if (left == null || right == null) {
+            return 0;
+        }
+        int sum = left.elem + right.elem;
+        sum += helper(left.left, right.right);
+        sum += helper(left.right, right.left);
+        return sum;
+    }
+
+
+}
+
+
+Task6 &gt;&gt;&gt;
+</font>
+
+public class Task6 {
+    public static boolean isBST(BSTNode root) {
+<a name="0"></a><font color="#FF0000"><a href="match124-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_12.gif"/></a>
+
+        return helper(root, null, null);
+    }
+    private static boolean helper(BSTNode node, Integer min, Integer max) {
+        if (node == null) return true;
+        if (min != null &amp;&amp; node.elem &lt;= min) return false;
+        if (max != null &amp;&amp; node.elem &gt;= max) return false;
+
+
+        return helper(node.left, min, node.elem) &amp;&amp;
+               helper(node.right, node.elem, max);
+</font>    }
+}</pre>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<html>
+<head>
+<title>A67_Sec18_24101508_Sayem-Quraishi---SAYEM-QURAISHI.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec18_24101508_Sayem-Quraishi---SAYEM-QURAISHI.txt<p></p><pre>
+Lab-6
+
+//TASK4
+
+<a name="0"></a><font color="#FF0000"><a href="match3-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_49.gif"/></a>
+
+public static void swapChild(BTNode root,int level,int k){
+        if(root==null){
+            return;
+        }
+       
+        if(level&lt;k){
+            BTNode temp=root.left;
+            root.left=root.right;
+            root.right=t;
+        }
+       
+
+        swapChild(root.left,level+1,k);
+
+        swapChild(root.right,level+1,k);
+   }
+
+
+//TASK5
+
+public static Integer subtractSummation( BTNode root ){
+        if(root==null){
+            return 0;
+        }
+
+        int ladd=sumHelper(root.left);
+        int radd=sumHelper(root.right);
+        return ladd-radd; 
+   }
+
+    private static Integer sumHelper(BTNode root){
+        if(root==null){
+            return 0;
+        }
+
+        int add=(Integer)root.elem;
+        add+=sumHelper(root.left);
+        add+=sumHelper(root.right);
+        return sum;
+   } 
+
+
+//TASK-6
+
+
+public static Integer levelSum(BTNode root){
+        if(root==null){
+            return 0;
+      }
+        return sumHelper(root,0);
+
+
+    private static Integer sumHelper(BTNode root,int level){
+        if(root==null){
+            return 0;
+      }
+       
+        Integer add=0;
+        if(level%2!=0){
+            add+=(Integer)root.elem;
+       }
+        else{
+            add-=(Integer)root.elem;
+
+       }
+       return add+sumHelper(root.left,level+1)+sumHelper(root.right,level+1);
+</font>    }
+
+
+
+Lab-7
+
+
+//TASK-4
+
+
+<a name="1"></a><font color="#00FF00"><a href="match3-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_46.gif"/></a>
+
+public static Integer rangeSum(BSTNode root,Integer l,Integer h){
+        if(root==null){
+            return 0;
+       }
+
+        Integer k=(Integer)root.elem;
+        Integer add=0;
+        if(k&gt;=l &amp;&amp; k&lt;=h){
+            add+=k;
+       }
+
+        if(k&lt;h){
+            add+=rangeSum(root.right,l,h);
+
+       }
+
+
+        if(x&gt;low){
+            add+=rangeSum(root.left,l,h);
+
+       }
+        return add; 
+
+    }
+
+
+//TASK-5
+
+
+ public static Integer mirrorSum(BSTNode root ){
+        if(root==null){
+            return 0;
+        }
+        return sumHelper(root.left, root.right);    
+
+
+ private static Integer sumHelper(BSTNode root1, BSTNode root2){
+        if(root1==null || root2 == null){
+           return 0;
+        }
+
+        int add=(Integer)root1.elem+(Integer)root2.elem;
+        add+=sumHelper(root1.left, root2.right);
+        add+=sumHelper(root1.right, root2.left);
+      
+        return add;
+    }
+
+
+
+//TASK-6
+
+public static Boolean isBST(BSTNode root){
+        if(root==null){
+            return false;
+        }
+        if((Integer)root.elem&gt;(Integer)root.left.elem){
+            return true;
+        }
+        if((Integer)root.elem&lt;(Integer)root.right.elem){
+            return true;
+        }
+        return false;    
+</font> }</pre>
+</body>
+</html>

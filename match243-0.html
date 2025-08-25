@@ -1,0 +1,142 @@
+<html>
+<head>
+<title>A67_Sec10_24101606_Iftier-Hossain-Mahi.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec10_24101606_Iftier-Hossain-Mahi.txt<p></p><pre>
+﻿//Task 4:
+
+
+public static void swapChild(BTNode root, int lvl, int M) {
+
+
+   helperfunc(root, 0, 2);
+}
+
+
+public static BTNode helperfunc(BTNode root, int lvl, int M) {
+   if (root == null) {
+       return null;
+   }
+<a name="2"></a><font color="#0000FF"><a href="match243-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_4.gif"/></a>
+
+   if (lvl &lt; M) {
+      BTNode store=root.left;
+      root.left=root.right;
+      root.right=store;
+   }
+   helperfunc(root.left, lvl+1, M);
+</font>   helperfunc(root.right, lvl+1, M);
+<a name="0"></a><font color="#FF0000"><a href="match243-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_33.gif"/></a>
+
+   return root;
+}
+
+
+// Task 5:
+
+
+public static Integer subtractSummation(BTNode root) {
+   if (root == null) {
+       return 0;
+   }
+   int sumL = helperfunc(root.left);
+   int sumR = helperfunc(root.right);
+
+
+   return sumL - sumR;
+}
+private static Integer helperfunc(BTNode root) {
+   if(root == null) {
+       return 0;
+   }
+ return (Integer)root.elem + helperfunc(root.left)+ helperfunc(root.right);
+}
+
+
+//Task 6:
+
+
+public static Integer levelSum( BTNode root ){
+
+
+   return helperfunc(root,0);
+}
+private static Integer helperfunc(BTNode root,int lvl) {
+   if (root == null) {
+       return 0;
+   }
+   if (lvl % 2 != 0) {
+       return (Integer) root.elem + helperfunc(root.left, lvl + 1) + helperfunc(root.right, lvl + 1);
+   } else {
+       return -(Integer) root.elem + helperfunc(root.left, lvl + 1) + helperfunc(root.right, lvl + 1);
+   }
+
+
+
+
+
+
+//task 4(lab 7):
+
+
+public static Integer rangeSum( BSTNode root, Integer low, Integer high ){
+if(root == null){
+   return 0;
+</font>}
+int sum=0;
+if(low&lt;=root.elem &amp;&amp; root.elem&lt;=high){
+   sum+=root.elem;
+}
+if(low&lt;=root.elem){
+   sum+=rangeSum(root.left,low,high);
+}
+if(high&gt;=root.elem){
+   sum+=rangeSum(root.right,low,high);
+}
+<a name="1"></a><font color="#00FF00"><a href="match243-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_11.gif"/></a>
+
+return sum;
+}
+
+
+//Task 5 (lab 7):
+
+
+public static Integer mirrorSum( BSTNode root ){
+if(root == null){
+    return 0;
+}
+return helperfunc(root.left, root.right);
+}
+private static int helperfunc(BSTNode rootLeft, BSTNode rootRight){
+if(rootLeft==null || rootRight==null){
+    return 0;
+}
+int sum=rootLeft.elem + rootRight.elem;
+</font>sum+=helperfunc(rootLeft.left , rootRight.right);
+sum+=helperfunc(rootLeft.right , rootRight.left);
+return sum;
+}
+
+
+//task 6 (lab-7):
+
+
+ public static Boolean isBST( BSTNode root ){
+if(root==null){
+   return true;
+}
+if(root.left==null &amp;&amp; root.right==null){
+   return true;
+} if(root.left!= null &amp;&amp; root.left.elem&gt;=root.elem){
+   return false;
+}
+if(root.right != null &amp;&amp; root.right.elem&lt;=root.elem){
+   return false;
+}
+return isBST(root.left) &amp;&amp; isBST(root.right);
+ }</pre>
+</body>
+</html>

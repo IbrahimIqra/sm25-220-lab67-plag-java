@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>A67_Sec19_24201431_MONEM-SHAHRIAR.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec22_24101213_Fariha-Ahsan.txt<p></p><pre>
+// Assignment 6
+
+// Task 4
+
+public static void swapChild( BTNode root, int lvl, int M ){
+        if(root==null || lvl&gt;=M)
+        {
+            return;
+        }
+
+        
+            BTNode tempNode = root.left;
+            root.left = root.right;
+<a name="2"></a><font color="#0000FF"><a href="match114-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_7.gif"/></a>
+
+            root.right = tempNode;
+        
+
+        swapChild(root.left, lvl+1, M);
+        swapChild(root.right, lvl+1, M);
+    }
+}
+
+
+// Task 5
+
+
+public static Integer subtractSummation( BTNode root ){
+        if(root == null)
+        {
+            return -1;
+</font><a name="0"></a><font color="#FF0000"><a href="match114-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_28.gif"/></a>
+
+        }
+        int leftSum = totalSum(root.left);
+        int rightSum = totalSum(root.right);
+        return leftSum - rightSum;    }
+
+    private static int totalSum(BTNode temp)
+    {
+        if(temp == null)
+        {
+            return 0;
+        }
+        return (int)temp.elem + totalSum(temp.left)+ totalSum(temp.right);
+    }
+
+
+
+// Task 6
+
+
+public static Integer levelSum( BTNode root ){
+        return tempMethod(root, 0);
+    }
+
+    private static int tempMethod(BTNode temp, int lvl){
+        if(temp == null)
+        {
+            return 0;
+        }
+
+        Integer val = (Integer)temp.elem;
+
+        if(lvl%2 == 0)
+        {
+            return -val + tempMethod(temp.left,lvl +1) + tempMethod(temp.right, lvl+1);
+        }
+        else
+        {
+             return val + tempMethod(temp.left,lvl +1) + tempMethod(temp.right, lvl+1);
+</font>        }
+    }
+
+
+
+===========================================================================================
+
+
+// Assignment 7
+
+
+//Task 4
+
+
+public static Integer rangeSum( BSTNode root, Integer low, Integer high ){
+        if (root == null)
+        {
+            return 0;
+        }
+        Integer sum = 0;
+<a name="1"></a><font color="#00FF00"><a href="match114-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_13.gif"/></a>
+
+        if (root.elem&gt;=low &amp;&amp; root.elem &lt;=high)
+        {
+            sum+=root.elem;
+        }
+
+        if(root.elem&gt;low)
+        {
+            sum+=rangeSum(root.left, low, high);
+        }
+
+        if(root.elem&lt;high)
+        {
+            sum+=rangeSum(root.right, low, high);
+        }
+
+        return sum;
+    }
+
+
+// Task 5
+
+
+public static Integer mirrorSum( BSTNode root ){
+        if(root != null)
+</font>        {
+            return check(root.left, root.right);
+        }
+        return 0;
+    }
+    private static Integer check(BSTNode leftnode, BSTNode rightnode)
+        {
+            if(leftnode == null || rightnode == null)
+            {
+                return 0;
+            }
+<a name="3"></a><font color="#00FFFF"><a href="match114-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_6.gif"/></a>
+
+               Integer sum = leftnode.elem+rightnode.elem;
+
+                sum+=check(leftnode.left, rightnode.right);
+                sum+=check(leftnode.right, rightnode.left);
+</font>                return sum;
+        }</pre>
+</body>
+</html>

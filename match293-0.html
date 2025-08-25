@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>A67_Sec13_24301027_Fyaz-Hossain.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec13_24301027_Fyaz-Hossain.txt<p></p><pre>
+Lab Assignment 6
+//Task4
+<a name="0"></a><font color="#FF0000"><a href="match293-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_26.gif"/></a>
+
+    public static void swapChild( BTNode root, int lvl, int M ){
+        //TO DO
+        if (root==null)
+        {
+         return;
+        }
+        if (lvl&lt;M) 
+        { //== dile hobe na nor &lt;= 
+         BTNode temp = root.left;
+         root.left = root.right;
+         root.right = temp;
+        }
+        swapChild(root.left, lvl + 1, M);
+        swapChild(root.right, lvl + 1, M);
+    }
+
+//Task5
+
+    public static Integer subtractSummation(BTNode root) {
+        if (root == null) return 0;
+        int leftSum = calcsum(root.left); //sum of left subtree
+        int rightSum = calcsum(root.right); //sum of right subtree
+        return leftSum - rightSum;
+    }
+
+    //Helper function to calculate sum of subtree
+    private static int calcsum(BTNode node)
+    {
+        if (node == null) return 0;
+</font><a name="2"></a><font color="#0000FF"><a href="match293-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_10.gif"/></a>
+
+        return (Integer) node.elem+calcsum(node.left)+calcsum(node.right);
+    }
+
+//Task6
+
+    public static Integer levelSum(BTNode root) {
+        return helper(root, 1); // root is at level 1 (odd)
+    }
+    private static int helper(BTNode root, int level) 
+    {
+     if (root == null) return 0;
+     int value = (Integer)root.elem;
+</font>      if (level % 2 == 1) 
+        {
+         return -value + helper(root.left, level + 1) + helper(root.right, level + 1);//odd
+        }
+         else 
+        {
+        return value + helper(root.left, level + 1) + helper(root.right, level + 1); //even
+        }
+    }
+
+Lab Assignment 7
+
+//Task4
+ public static Integer rangeSum( BSTNode root, Integer low, Integer high ){
+    //     //TO DO
+        if(root == null) return 0;
+        BSTNode current = root;
+        int sum = 0;
+        //while (current != null) {
+            if (current.elem &gt;= low &amp;&amp; current.elem &lt;= high)
+             {
+                sum+=current.elem;
+                //current = current.right;
+            } 
+             if (current.elem &gt; low)
+             {
+              sum+=rangeSum(current.left, low, high);
+              //current = current.right;
+            } 
+             if (current.elem &lt; high) {
+                sum += rangeSum(current.right, low, high);
+                //current = current.left;
+            }
+        //}
+<a name="1"></a><font color="#00FF00"><a href="match293-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_21.gif"/></a>
+
+        return sum;
+    }
+
+//Task5
+ public static Integer mirrorSum(BSTNode root) {
+            if (root == null) return 0;
+            return mirrorSumHelper(root.left, root.right);
+        }
+
+        // Helper function to sum mirror pairs
+        private static Integer mirrorSumHelper(BSTNode left, BSTNode right) {
+            if (left == null || right == null) {
+                return 0;
+            }
+            // Add the values of mirror nodes
+            int sum = left.elem + right.elem;
+            sum += mirrorSumHelper(left.left, right.right);
+            sum += mirrorSumHelper(left.right, right.left);
+            return sum;
+        }
+//Task6
+public static Boolean isBST( BSTNode root ){
+</font>        //TO DO
+        if (root == null) return true;
+        else return false;
+}</pre>
+</body>
+</html>

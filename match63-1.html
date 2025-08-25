@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>A67_Sec01_24201463_Md.Tanimur-Rahman.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec12_19301242_Md.-Hasan-Mridul-Nibir.txt<p></p><pre>
+Lab#06
+
+Task#04
+
+    public static void swapChild( BTNode root, int lvl, int M ){
+        if (root == null) {
+            return;
+        }
+        
+<a name="4"></a><font color="#FF00FF"><a href="match63-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+        if (lvl + 1 &lt;= M) {
+            BTNode temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+        }
+        
+        swapChild(root.left, lvl + 1, M);
+</font>        swapChild(root.right, lvl + 1, M);
+    }
+
+Task#05
+
+<a name="3"></a><font color="#00FFFF"><a href="match63-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+    public static Integer subtractSummation( BTNode root ){
+        if (root == null) {
+            return 0;
+        }
+        
+        int sumL = subtreeSum(root.left);
+        int sumR = subtreeSum(root.right);
+        
+        return sumL - sumR;
+    }
+
+    private static Integer subtreeSum(BTNode node) {
+</font>        if (node == null) {
+            return 0;
+        }
+        
+        Integer value = (Integer) node.elem;
+        
+        return value + subtreeSum(node.left) + subtreeSum(node.right);
+
+    }
+
+Task#06
+
+<a name="0"></a><font color="#FF0000"><a href="match63-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_21.gif"/></a>
+
+    public static Integer levelSum(BTNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int[] sums = new int[2];
+        levelSumHelper(root, 0, sums);
+        return sums[1] - sums[0];
+    }
+    
+    private static void levelSumHelper(BTNode node, int level, int[] sums) {
+        if (node == null) {
+            return;
+        }
+
+        int value = (Integer) node.elem;
+
+        if (level % 2 == 0) {
+            sums[0] += value;
+        } 
+        else {
+            sums[1] += value;
+        }
+
+        levelSumHelper(node.left, level + 1, sums);
+        levelSumHelper(node.right, level + 1, sums);
+</font>    }
+
+Lab#07
+
+Task#04
+
+    public static Integer rangeSum(BSTNode root, Integer low, Integer high) {
+        if (root == null) {
+            return 0;
+        }
+        
+        if (root.elem &gt;= low &amp;&amp; root.elem &lt;= high) {
+            return root.elem + rangeSum(root.left, low, high) + rangeSum(root.right, low, high);
+        } 
+        else if (root.elem &lt; low) {
+            return rangeSum(root.right, low, high);
+        } 
+        else {
+            return rangeSum(root.left, low, high);
+        }
+    }
+
+Task#05
+
+<a name="2"></a><font color="#0000FF"><a href="match63-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_7.gif"/></a>
+
+    public static Integer mirrorSum(BSTNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return mirrorSumHelper(root.left, root.right);
+    }
+    
+    private static Integer mirrorSumHelper(BSTNode left, BSTNode right) {
+        if (left == null || right == null) {
+            return 0;
+</font>        }
+        else {
+            int sum = left.elem + right.elem;
+        
+            sum += mirrorSumHelper(left.left, right.right);
+            sum += mirrorSumHelper(left.right, right.left);
+        
+            return sum;
+        }
+    }
+
+Task#06
+
+<a name="1"></a><font color="#00FF00"><a href="match63-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_14.gif"/></a>
+
+    public static Boolean isBST(BSTNode root) {
+        return isBSTHelper(root, null, null);
+    }
+
+    private static Boolean isBSTHelper(BSTNode node, Integer min, Integer max) {
+        if (node == null) {
+            return true;
+        }
+        
+        if ((min != null &amp;&amp; node.elem &lt;= min) || (max != null &amp;&amp; node.elem &gt;= max)) {
+          return false;
+        }
+    
+        return isBSTHelper(node.left, min, node.elem) &amp;&amp; isBSTHelper(node.right, node.elem, max);
+</font>    }
+</pre>
+</body>
+</html>

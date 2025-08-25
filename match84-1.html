@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>A67_Sec23_24201385_Anita-Rahman-Chadni---ANITA-RAHMAN-CHADNI.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec02_23201629_MD.-Tanzid-Anik---MD.-TANZID-ANIK.txt<p></p><pre>
+//Lab 6:
+//Assignment Task 4:
+<a name="0"></a><font color="#FF0000"><a href="match84-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_36.gif"/></a>
+
+public static void swapChild( BTNode root, int lvl, int M ){
+         if(root == null){
+           return;
+         }
+
+        if(lvl &lt; M){
+            BTNode temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+        }
+        swapChild(root.left, lvl+1, M);
+        swapChild(root.right, lvl+1, M);
+    }  
+
+
+
+//Assignment Task 5:
+public static Integer subtractSummation( BTNode root ){
+        if(root == null){
+            return 0;        
+        }
+        return sumleft(root.left) - sumright(root.right);    
+    }
+
+     private static Integer sumleft(BTNode left_root){
+       if(left_root == null){
+          return 0;
+       }
+         int sum = (Integer)left_root.elem;
+         
+           sum += sumleft(left_root.left);
+           sum += sumleft(left_root.right);
+        return sum;
+     }
+
+        private static Integer sumright(BTNode right_root){
+       if(right_root == null){
+          return 0;
+       }
+         int sum = (Integer)right_root.elem;
+         
+           sum += sumright(right_root.left);
+           sum += sumright(right_root.right);
+        return sum; 
+    }
+
+
+//Assignment Task 6:
+public static Integer levelSum( BTNode root ){
+        if(root == null){
+            return 0;
+</font>        }
+
+            Integer output = helper(root, 0);
+            return output;
+        }
+        private static Integer helper(BTNode root, int level){
+            if(root == null){
+            return 0;
+            }
+
+            int val;
+            if(level % 2 == 0){
+                val = -(Integer)root.elem;
+            }
+            else{
+                val = (Integer)root.elem;
+            }
+
+            val += helper(root.left, level+1);
+            val += helper(root.right, level+1);
+            return val;
+        }
+
+
+
+
+
+
+//  //Lab 7:
+//Assignment Task 4:
+<a name="1"></a><font color="#00FF00"><a href="match84-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_6.gif"/></a>
+
+public static Integer rangeSum( BSTNode root, Integer low, Integer high ){
+        if(root == null){
+            return 0;
+        }
+        int sum = 0;
+        if(root.elem &gt;= low &amp;&amp; root.elem &lt;= high){
+</font>            sum = root.elem;
+        }
+        sum += rangeSum(root.left, low, high);
+        sum += rangeSum(root.right, low, high);
+<a name="2"></a><font color="#0000FF"><a href="match84-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_6.gif"/></a>
+
+        return sum; 
+    }
+
+
+
+//Assignment Task 5:
+public static Integer mirrorSum( BSTNode root ){
+        if(root == null){
+            return 0;
+        }
+        return mirrorsum_helper(root.left, root.right); 
+    }
+    public static Integer mirrorsum_helper(BSTNode left_child ,BSTNode right_child) {
+</font>        Integer sum = 0;
+        if(left_child == null || right_child == null){
+            return 0;
+        }
+        else{
+<a name="3"></a><font color="#00FFFF"><a href="match84-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+            sum += (Integer)left_child.elem + (Integer)right_child.elem;
+        }
+        sum += mirrorsum_helper(left_child.left, right_child.right );
+        sum += mirrorsum_helper(left_child.right, right_child.left);
+        return sum;
+    }
+    
+
+
+
+
+
+//Assignment Task 6:
+public static Boolean isBST( BSTNode root ){
+</font>        boolean val = true;
+        if(root == null || root.left == null || root.right == null){
+            return null;
+        }
+        
+        if(root.left.elem &gt; root.elem || root.right.elem &lt; root.elem){
+            return false;
+        }            
+            
+            isBST(root.left);
+            isBST(root.right);
+            return val;            
+            
+    }</pre>
+</body>
+</html>

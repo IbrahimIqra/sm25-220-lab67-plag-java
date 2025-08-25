@@ -1,0 +1,189 @@
+<html>
+<head>
+<title>A67_Sec24_23101192_Araf-Sayed-Prottoy.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec24_23101192_Araf-Sayed-Prottoy.txt<p></p><pre>
+#task5
+
+class Node {
+    int elem;
+    Node left, right;
+    Node(int e) { elem = e; }
+}
+
+public class SubtractSummation {
+   
+<a name="4"></a><font color="#FF00FF"><a href="match169-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_3.gif"/></a>
+
+    static int sum(Node n) {
+        if (n == null) return 0;
+        return n.elem + sum(n.left) + sum(n.right);
+</font>    }
+
+   
+    static int subtract_summation(Node root) {
+        if (root == null) return 0;
+        int leftSum  = root.elem + sum(root.left); 
+        int rightSum = sum(root.right);
+        return leftSum - rightSum;
+    }
+}
+
+#task6
+
+class Node {
+    int data;
+    Node left, right;
+    Node(int d) { data = d; }
+}
+
+public class DifferenceOfLevelSum {
+    static int getDifference(Node root) {
+        return helper(root, 0);
+    }
+    static int helper(Node node, int level) {
+        if (node == null) return 0;
+        if (level % 2 != 0) {
+            return node.data + helper(node.left, level + 1) + helper(node.right, level + 1);
+        } else {
+            return -node.data + helper(node.left, level + 1) + helper(node.right, level + 1);
+        }
+    }
+
+<a name="3"></a><font color="#00FFFF"><a href="match169-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+    public static void main(String[] args) {
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+</font>        root.left.left = new Node(4);
+        root.right.left = new Node(5);
+<a name="2"></a><font color="#0000FF"><a href="match169-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_4.gif"/></a>
+
+        root.right.right = new Node(6);
+        root.right.left.left = new Node(7);
+        root.right.left.right = new Node(8);
+        System.out.println(getDifference(root));
+</font>    }
+}
+
+//7
+
+#task 6
+
+class Node {
+    int val;
+    Node left, right;
+
+    Node(int val) {
+        this.val = val;
+        left = right = null;
+    }
+}
+
+public class BSTChecker {
+    
+    public static boolean isBST(Node root) {
+        if (root == null) return true;
+
+      
+        if (root.left != null &amp;&amp; root.left.val &gt;= root.val) return false;
+        if (root.right != null &amp;&amp; root.right.val &lt;= root.val) return false;
+
+<a name="5"></a><font color="#FF0000"><a href="match169-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+        return isBST(root.left) &amp;&amp; isBST(root.right);
+    }
+
+    public static void main(String[] args) {
+        // Sample 1 - Not a BST
+        Node root1 = new Node(4);
+        root1.left = new Node(9);
+</font>        root1.right = new Node(2);
+<a name="0"></a><font color="#FF0000"><a href="match169-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+        root1.left.left = new Node(3);
+        root1.left.right = new Node(-5);
+        root1.right.right = new Node(7);
+        System.out.println(isBST(root1)); 
+</font><a name="6"></a><font color="#00FF00"><a href="match169-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+
+        // Sample 2 - Is a BST
+        Node root2 = new Node(4);
+        root2.left = new Node(2);
+        root2.right = new Node(7);
+        root2.left.left = new Node(-5);
+</font><a name="7"></a><font color="#0000FF"><a href="match169-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+        root2.left.right = new Node(3);
+        root2.right.right = new Node(9);
+        System.out.println(isBST(root2)); 
+</font>    }
+}
+
+#task5
+
+class Node {
+    int val;
+    Node left, right;
+
+    Node(int val) {
+        this.val = val;
+        left = right = null;
+    }
+}
+
+public class BSTRangeSum {
+    
+    public static int rangeSum(Node root, int low, int high) {
+        if (root == null) return 0;
+
+       
+        if (root.val &lt;= low) {
+           
+            return rangeSum(root.left, low, high);
+        }
+
+        
+        if (root.val &gt;= high) {
+           
+            return rangeSum(root.right, low, high);
+        }
+
+        
+<a name="1"></a><font color="#00FF00"><a href="match169-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_4.gif"/></a>
+
+        return rangeSum(root.left, low, high) + rangeSum(root.right, low, high);
+    }
+
+    public static void main(String[] args) {
+       
+        Node root1 = new Node(8);
+        root1.left = new Node(4);
+</font>        root1.right = new Node(12);
+        root1.left.left = new Node(2);
+        root1.left.right = new Node(6);
+<a name="8"></a><font color="#00FFFF"><a href="match169-1.html#8" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+        root1.right.left = new Node(10);
+        root1.right.right = new Node(14);
+        System.out.println(rangeSum(root1, 5, 13)); 
+</font>
+        // Example 2
+        Node root2 = new Node(10);
+        root2.left = new Node(5);
+        root2.right = new Node(15);
+        root2.left.left = new Node(3);
+        root2.left.right = new Node(7);
+        root2.right.right = new Node(18);
+        System.out.println(rangeSum(root2, 7, 15)); 
+    }
+}
+
+
+</pre>
+</body>
+</html>

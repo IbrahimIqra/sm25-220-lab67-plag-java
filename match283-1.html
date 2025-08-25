@@ -1,0 +1,228 @@
+<html>
+<head>
+<title>A67_Sec09_24101359_Muhsina-Islam-Khan---MUHSINA-ISLAM-KHAN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec01_24201459_Mohammad-Sajidul-Karim.txt<p></p><pre>
+//Lab06:
+
+
+
+// Complete the swapChild method
+//ASSIGNMENT TASK MUST SUBMIT
+<a name="3"></a><font color="#00FFFF"><a href="match283-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_7.gif"/></a>
+
+public class Task4 {
+
+    //===================================TASK#4===================================
+    // This method takes only 3 parameters
+    // 1st one is root of the given tree
+    // 2nd one is there to help you count the levels
+    // 3rd one is the level TILL whic you need to swap childs
+    // All the changes will happen in-place
+    // This method doesn't return anything
+    // You can use extra helper private static methods as per need
+    public static void swapChild( BTNode root, int lvl, int M ){
+        //TO DO
+      if(root==null){
+        return;
+      }
+      if(lvl&lt;=M){
+      BTNode t=root.left;
+      root.left=root.right;
+      root.right=t;
+</font>      
+      }else{
+        return;
+      }
+      swapChild(root.left,lvl+1,M);
+      swapChild(root.right,lvl+1,M);
+    }
+      
+    //============================================================================
+}
+
+
+
+/ Complete the subtractSummation method
+//ASSIGNMENT TASK MUST SUBMIT
+<a name="2"></a><font color="#0000FF"><a href="match283-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_9.gif"/></a>
+
+public class Task5 {
+
+    //===================================TASK#5===================================
+    // This method takes only 1 parameter which is root of the given tree
+    // This method returns an Integer
+    // At times you may need to typeCast root.elem to Integer
+    // You can use extra helper private static methods with extra extra params as per need
+    public static Integer subtractSummation( BTNode root ){
+        //TO DO
+      if(root==null){
+        return 0;
+      }
+      int left =subtree(root.left);
+      int right=subtree(root.right);
+      return left-right;
+        
+    }
+    private static int subtree(BTNode node){
+      if(node==null){
+</font>        return 0;
+      }
+      int val=(Integer)node.elem;
+      return val+subtree(node.left)+subtree(node.right);
+    }
+    //============================================================================
+
+}
+
+
+
+// Complete the levelSum method
+//ASSIGNMENT TASK MUST SUBMIT
+public class Task6 {
+
+    //===================================TASK#6===================================
+    // This method takes only 1 parameter which is root of the given tree
+    // This method returns an Integer
+    // At times you may need to typeCast root.elem to Integer
+    // You can use extra helper private static methods with extra extra params as per need
+    public static Integer levelSum( BTNode root ){
+        //TO DO
+      if(root==null){
+        return 0;
+      }
+      
+        return helper(root,0); //remove this line
+    }
+    private static int helper(BTNode node, int lvl){
+      if(node==null){
+        return 0;
+      }
+      int val=(Integer)node.elem;
+      int here;
+      if(lvl%2==0){
+        here=-val;
+      }else{
+        here=val;
+      }
+      int left=helper(node.left,lvl+1);
+      int right=helper(node.right,lvl+1);
+      return here+left+right;
+    }
+
+    //============================================================================
+
+}
+
+
+
+//Lab07
+
+
+//Assignment Task (must Submit)
+// Complete the rangeSum method
+public class Task4 {
+
+    //===================================TASK#4======================
+    // This method takes only three parameters
+    // first one is the root of the given tree
+    // second one the low range and third one is high range
+    // You can use extra helper private static methods as per need
+<a name="0"></a><font color="#FF0000"><a href="match283-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_15.gif"/></a>
+
+    public static Integer rangeSum( BSTNode root, Integer low, Integer high ){
+        //TO DO
+      if (root == null){
+        return 0;
+      }
+    int sum = 0;
+    if (root.elem &gt;= low &amp;&amp; root.elem &lt;= high){
+      sum += root.elem;
+    }
+    if (root.elem &gt; low)  {
+      sum += rangeSum(root.left,  low,  high);
+    }
+    if (root.elem &lt; high) {
+      sum += rangeSum(root.right, low,  high);
+    }
+    return sum;
+</font>
+    }
+    //===============================================================
+
+
+}
+
+
+
+//Assignment Task (must Submit)
+// Complete the sumOfLeaves method
+public class Task5 {
+
+    //===================================TASK#5======================
+    // This method takes only one parameter
+    // it is root of the given tree
+    // You can use extra helper private static methods as per need
+<a name="1"></a><font color="#00FF00"><a href="match283-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_9.gif"/></a>
+
+    public static Integer mirrorSum( BSTNode root ){
+        //TO DO
+      if (root == null){
+        return 0;
+      }
+    return mirrorPairSum(root.left, root.right);
+}
+
+private static int mirrorPairSum(BSTNode a, BSTNode b) {
+    if (a == null || b == null) return 0;
+    int current = a.elem + b.elem;
+</font>    int outer   = mirrorPairSum(a.left,  b.right);
+    int inner   = mirrorPairSum(a.right, b.left);
+    return current + outer + inner;
+    }
+    //===============================================================
+
+
+}
+
+
+
+
+
+//Assignment Task (must Submit)
+// Complete the isBST method
+public class Task6 {
+
+    //===================================TASK#6======================
+    // This method takes only one parameter
+    // it is root of the given tree
+    // You can use extra helper private static methods as per need
+    public static Boolean isBST( BSTNode root ){
+        //TO DO
+       return isBSTUtil(root, Long.MIN_VALUE, Long.MAX_VALUE);
+}
+
+private static boolean isBSTUtil(BSTNode node, long min, long max) {
+  if (node == null) {
+    return true;
+  }
+<a name="4"></a><font color="#FF00FF"><a href="match283-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_5.gif"/></a>
+
+  if (node.elem &lt;= min || node.elem &gt;= max){
+    return false;
+  }
+    return isBSTUtil(node.left,  min,       node.elem) &amp;&amp;
+           isBSTUtil(node.right, node.elem, max);
+</font>}
+    }
+    //===============================================================
+
+
+
+
+
+</pre>
+</body>
+</html>

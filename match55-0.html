@@ -1,0 +1,176 @@
+<html>
+<head>
+<title>A67_Sec26_24301407_Farhan-Labib-Alam.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec26_24301407_Farhan-Labib-Alam.txt<p></p><pre>
+#ASSIGMENT 06:
+
+#ASSIGMENT 06 TASK 04 (A6T4):
+
+public class Task4 {
+<a name="2"></a><font color="#0000FF"><a href="match55-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_6.gif"/></a>
+
+    public static void swapChild( BTNode root, int lvl, int M ){
+        if(root==null){
+            return;
+        }
+        if(lvl&lt;M){
+            BTNode temp = root.left;
+            root.left=root.right;
+            root.right=temp;
+        }
+        swapChild(root.left,lvl+1,M);
+</font>        swapChild(root.right,lvl+1,M);
+    }
+}
+
+#ASSIGMENT 06 TASK 05 (A6T5):
+
+public class Task5 {
+<a name="0"></a><font color="#FF0000"><a href="match55-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_7.gif"/></a>
+
+    public static Integer subtractSummation( BTNode root ){
+        if(root==null){
+            return 0;
+        }
+        int left_sum = helper_subtractSummation(root.left);
+        int right_sum = helper_subtractSummation(root.right);
+        return left_sum-right_sum; //remove this line
+    }
+    private static Integer helper_subtractSummation( BTNode sent_root ){
+        if(sent_root==null){
+            return 0;
+        }
+        int value= (int)sent_root.elem;
+</font>        int sum = value + helper_subtractSummation(sent_root.left) + helper_subtractSummation(sent_root.right);
+        return sum;
+    }
+}
+
+#ASSIGMENT 06 TASK 06 (A6T6):
+
+public class Task6 {
+    public static Integer levelSum( BTNode root ){
+        int even = helper_even(root,1);
+        int odd = helper_odd(root,1);
+        return even-odd;
+    }
+<a name="7"></a><font color="#0000FF"><a href="match55-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+    private static Integer helper_even(BTNode sent_root, int level){
+        if(sent_root==null) return 0;
+        int even_sum=0;
+        if(level%2==0){
+</font><a name="6"></a><font color="#00FF00"><a href="match55-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_4.gif"/></a>
+
+            even_sum+=(int)sent_root.elem;
+        }
+        even_sum+=helper_even(sent_root.left,level+1);
+        even_sum+=helper_even(sent_root.right,level+1);
+</font>        return even_sum;
+    }
+
+    private static Integer helper_odd(BTNode sent_root, int level){
+        if(sent_root==null) return 0;
+        int odd_sum=0;
+        if(level%2!=0){
+            odd_sum+=(int)sent_root.elem;
+        }
+        odd_sum+=helper_odd(sent_root.left,level+1);
+        odd_sum+=helper_odd(sent_root.right,level+1);
+        return odd_sum;
+    }
+}
+
+
+#ASSIGMENT 07:
+
+#ASSIGMENT 07 TASK 04 (A7T4):
+
+
+public class Task4 {
+    public static Integer rangeSum( BSTNode root, Integer low, Integer high ){
+        if(root==null){
+            return null;
+        }
+        return rangeSum_helper(root,low,high);
+    }
+    private static Integer rangeSum_helper(BSTNode s_root, Integer s_low, Integer s_high){
+        if(s_root==null){
+            return 0;
+        }
+        int sum=0;
+<a name="1"></a><font color="#00FF00"><a href="match55-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_7.gif"/></a>
+
+        if(s_root.elem&gt;=s_low&amp;&amp;s_root.elem&lt;=s_high){
+            sum+=s_root.elem;
+        }
+        sum+=rangeSum_helper(s_root.left,s_low,s_high);
+        sum+=rangeSum_helper(s_root.right,s_low,s_high);
+        return sum;
+</font>    }
+}
+
+#ASSIGMENT 07 TASK 05 (A7T5):
+
+public class Task5 {
+    public static Integer mirrorSum( BSTNode root ){
+        if(root==null){
+            return null;
+        }
+<a name="4"></a><font color="#FF00FF"><a href="match55-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+        return mirrorSum_helper(root.left,root.right);
+    }
+    private static Integer mirrorSum_helper(BSTNode root_l, BSTNode root_r){
+        if(root_l==null||root_r==null){
+            return 0;
+</font>        }
+<a name="5"></a><font color="#FF0000"><a href="match55-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+        int sum = root_l.elem+root_r.elem;
+
+        sum+=mirrorSum_helper(root_l.left,root_r.right);
+        sum+=mirrorSum_helper(root_l.right,root_r.left);
+        return sum;
+</font>    }
+
+}
+
+#ASSIGMENT 07 TASK 06 (A7T6):
+
+public class Task6 {
+<a name="3"></a><font color="#00FFFF"><a href="match55-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_6.gif"/></a>
+
+    public static Boolean isBST( BSTNode root ){
+        if(root==null){
+            return true;
+        }
+
+        return isBST_helper(root);
+    }
+    private static Boolean isBST_helper(BSTNode s_root) {
+        if (s_root == null) {
+            return true;
+        }
+        boolean check = true;
+
+        if((s_root.left!=null&amp;&amp;s_root.left.elem&gt;=s_root.elem)||(s_root.right!=null&amp;&amp;s_root.right.elem&lt;=s_root.elem)){
+</font>            check=false;
+        }
+        
+        boolean check_left = isBST_helper(s_root.left);
+        boolean check_right = isBST_helper(s_root.right);
+
+        if(!check_left||!check_right){
+            check=false;
+        }
+
+        return check;
+    }
+
+}</pre>
+</body>
+</html>

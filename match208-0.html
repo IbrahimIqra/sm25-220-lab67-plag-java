@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>A67_Sec10_24101246_Nahiyan-Mysha-Ayome.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec10_24101246_Nahiyan-Mysha-Ayome.txt<p></p><pre>
+<a name="0"></a><font color="#FF0000"><a href="match208-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_13.gif"/></a>
+
+﻿public class Task1 {
+ public static void swapChild( BTNode root, int lvl, int M ){
+   
+        if (root==null){
+        return;
+        }
+        if(lvl&lt;M){
+            BTNode temp=root.left;
+            root.left=root.right;
+        root.right = temp;
+swapChild(root.left,lvl + 1,M);
+swapChild(root.right, lvl + 1,M);
+    }
+    
+    }
+}
+  public class Task2 {
+ public static Integer subtractSummation( BTNode root ){
+</font>    if(root==null){
+            return 0;
+        }
+<a name="1"></a><font color="#00FF00"><a href="match208-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_9.gif"/></a>
+
+        int leftsum =subtreesum( root.left );
+       int rightsum=subtreesum(root.right );
+         return leftsum-rightsum;
+   }
+private static Integer subtreesum(BTNode root){
+if(root==null){
+    return 0;
+        }
+        return (Integer)root.elem + subtreesum(root.left) + subtreesum(root.right);
+    }
+}
+public class Task3 {
+public static Integer levelSum( BTNode root){
+</font>        if (root == null) {
+            return 0;
+        }
+        
+        int oddSum = calculateOddLevelSum(root, 1);
+        int evenSum = calculateEvenLevelSum(root, 1);
+        return evenSum - oddSum;
+    }
+private static int calculateOddLevelSum(BTNode node, int level){
+        if (node == null) {
+            return 0;
+        }
+         int sum = 0;
+        if (level % 2 == 1) {
+            sum += (Integer)node.elem;
+        }
+        sum += calculateOddLevelSum(node.left, level + 1);
+        sum += calculateOddLevelSum(node.right, level + 1);
+        
+        return sum;
+    }
+      private static int calculateEvenLevelSum(BTNode node, int level){
+        if (node == null) {
+            return 0;
+        }
+         int sum = 0;
+        if (level % 2 == 0) {
+            sum += (Integer)node.elem;
+        }
+         sum += calculateEvenLevelSum(node.left, level + 1);
+        sum += calculateEvenLevelSum(node.right, level + 1);
+        
+        return sum;
+    }
+}
+<a name="2"></a><font color="#0000FF"><a href="match208-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_8.gif"/></a>
+
+public class Task4 {
+ public static Integer rangeSum( BSTNode root, Integer low, Integer high ){
+        if(root==null){
+            return 0;
+    }
+    int sum=0;
+    if(root.elem&gt;=low &amp;&amp; root.elem&lt;=high){
+        sum+=root.elem;
+</font>    }
+    if(root.elem&gt;=low){
+   sum+= rangeSum(root.left,low,high);}
+   if(root.elem&lt;=high){
+    sum+= rangeSum(root.right,low,high);
+   }
+return sum;
+}}
+public class Task5 {
+ public static Integer mirrorSum(BSTNode root){
+        if(root==null){
+            return 0;
+        } 
+<a name="4"></a><font color="#FF00FF"><a href="match208-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_5.gif"/></a>
+
+        return calcuSum(root.left,root.right);
+    }
+ private static Integer calcuSum( BSTNode left,BSTNode right){
+ if (left==null || right ==null){
+    return 0;
+</font> }
+ else{
+<a name="3"></a><font color="#00FFFF"><a href="match208-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_7.gif"/></a>
+
+   int result= left.elem +right.elem;
+      result+= calcuSum(left.left, right.right);
+        result += calcuSum(left.right, right.left);
+        return result;
+}
+}}
+public class Task6 {
+    public static Boolean isBST( BSTNode root){
+</font>        if(root==null){
+            return true;
+    }
+    return checkBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+}
+     private  static Boolean checkBST( BSTNode root,int min,int max ){
+if(root==null){
+return true;
+    }
+if(min&gt;=root.elem || root.elem&gt;=max){
+    return false;
+}
+return checkBST(root.left,min,root.elem) &amp;&amp; checkBST(root.right,root.elem,max);
+}}</pre>
+</body>
+</html>

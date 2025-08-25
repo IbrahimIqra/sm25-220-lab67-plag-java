@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>A67_Sec22_24101021_Ohi-Alamgir---OHI-ALAMGIR.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec22_24101021_Ohi-Alamgir---OHI-ALAMGIR.txt<p></p><pre>
+<a name="1"></a><font color="#00FF00"><a href="match134-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_14.gif"/></a>
+
+public class Task4 {
+    public static void swapChild( BTNode root, int lvl, int M ){
+        if (root==null){
+                return;}
+        if(lvl&lt;M){
+            BTNode left=root.left;
+            root.left=root.right;
+            root.right=left;
+
+        }
+        swapChild(root.left, lvl+1, M);
+        swapChild(root.right, lvl+1, M);
+        }
+    }
+public class Task5 {
+
+    
+    public static Integer subtractSummation( BTNode root ){
+</font>        if(root==null){
+            return 0;}
+            Integer sumleft=sumtree(root.left);
+<a name="0"></a><font color="#FF0000"><a href="match134-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_14.gif"/></a>
+
+            Integer sumright=sumtree(root.right);
+            return sumleft-sumright;
+        }
+        private static Integer sumtree(BTNode root){
+          if(root==null){
+            return 0;
+        }
+        
+        return (Integer)root.elem+sumtree(root.left)+sumtree(root.right);
+        }
+        
+        
+
+        }
+public class Task6 {
+
+    
+    public static Integer levelSum( BTNode root ){
+        //TO DO
+        return sum(root,1); //remove this line
+    }
+private static Integer sum( BTNode root,int lvl ){
+if(root==null){
+            return 0;}
+            if(lvl%2==0){
+</font>                return (Integer)root.elem+ sum(root.left,lvl+1)+sum(root.right,lvl+1);
+            }
+            else {
+<a name="2"></a><font color="#0000FF"><a href="match134-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_8.gif"/></a>
+
+                return -(Integer)root.elem+sum(root.left,lvl+1)+sum(root.right,lvl+1);
+            }
+        
+            
+}
+}
+
+  public class Task4 {
+
+    public static Integer rangeSum( BSTNode root, Integer low, Integer high ){
+        if (root==null){
+            return 0;
+</font>        }
+        return sum(root, low , high); // remove this line
+    }
+
+private static Integer sum( BSTNode root, Integer low, Integer high ){
+        if (root==null){
+    return 0;}
+    int sum=0;
+    if(root.elem&gt;=low &amp;&amp;root.elem&lt;=high){
+        sum=root.elem;
+    }
+if(root.elem&gt;low){
+    sum+=sum(root.left,low,high);
+}
+if(root.elem&lt;high){
+    sum+=sum(root.right,low,high);
+}
+
+return sum;
+}
+}  
+//Assignment Task 5
+// Complete the sumOfLeaves method
+public class Task5 {
+
+        public static Integer mirrorSum( BSTNode root ){
+        if (root==null){
+            return 0;
+        }
+<a name="4"></a><font color="#FF00FF"><a href="match134-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_6.gif"/></a>
+
+        return sum(root.left,root.right); // remove this line
+    }
+public static Integer sum( BSTNode left, BSTNode right) {
+    if(left==null || right==null){
+        return 0;
+</font>    }
+<a name="3"></a><font color="#00FFFF"><a href="match134-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_8.gif"/></a>
+
+int sum=left.elem+ right.elem;
+sum+=sum(left.left,right.right);
+sum+=sum(left.right,right.left);
+return sum;
+}
+
+} 
+public class Task6 {
+
+    
+    public static Boolean isBST( BSTNode root ){
+</font>        if(root==null){
+        return true; }
+    
+  if(root.left!=null) { 
+if(root.left.elem&gt;=root.elem){
+    return false;}
+if (!isBST(root.left)){
+    return false;
+}
+}
+if(root.right!=null) {
+if(root.right.elem&lt;=root.elem){
+    return false;}
+if (!isBST(root.right)){
+    return false;
+}}
+return true;
+}
+}       </pre>
+</body>
+</html>
